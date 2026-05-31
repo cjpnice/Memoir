@@ -346,6 +346,8 @@ memoir-windows-amd64.exe</code></div>
   var REPO = "cjpnice/Memoir";
   var API_URL = "https://api.github.com/repos/" + REPO + "/releases/latest";
   var RELEASES_URL = "https://github.com/" + REPO + "/releases";
+  var DOWNLOAD_BASE = "https://github.com/" + REPO + "/releases/download";
+  var ASSET_NAMES = ["memoir-darwin-arm64", "memoir-linux-amd64", "memoir-windows-amd64.exe"];
   var DOWNLOAD_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
   var metaEl = document.getElementById("download-meta");
@@ -378,24 +380,22 @@ memoir-windows-amd64.exe</code></div>
       assetMap[assets[i].name] = assets[i];
     }
 
-    // Always query fresh from DOM to avoid stale references
     var buttons = document.querySelectorAll(".download-btn");
     for (var j = 0; j < buttons.length; j++) {
       var btn = buttons[j];
       var assetName = btn.getAttribute("data-asset");
       var asset = assetMap[assetName];
 
-      if (asset) {
-        btn.disabled = false;
-        btn.setAttribute("data-url", asset.browser_download_url);
-        var sizeStr = formatSize(asset.size);
-        var label = currentLang === "zh" ? "下载" : "Download";
-        btn.innerHTML = DOWNLOAD_ICON + "<span>" + label + " " + version + (sizeStr ? " (" + sizeStr + ")" : "") + "</span>";
-      } else {
-        btn.disabled = true;
-        btn.removeAttribute("data-url");
-        btn.innerHTML = DOWNLOAD_ICON + "<span>" + t("download.notAvailable") + "</span>";
-      }
+      // Construct download URL — from API data or from known pattern
+      var url = asset
+        ? asset.browser_download_url
+        : DOWNLOAD_BASE + "/" + version + "/" + assetName;
+      var sizeStr = asset ? formatSize(asset.size) : "";
+      var label = currentLang === "zh" ? "下载" : "Download";
+
+      btn.disabled = false;
+      btn.setAttribute("data-url", url);
+      btn.innerHTML = DOWNLOAD_ICON + "<span>" + label + " " + version + (sizeStr ? " (" + sizeStr + ")" : "") + "</span>";
     }
   }
 
@@ -413,57 +413,73 @@ memoir-windows-amd64.exe</code></div>
     }
   }
 
-  function renderFallback() {
-    // Always query fresh from DOM to avoid stale references
-    var buttons = document.querySelectorAll(".download-btn");
-    for (var k = 0; k < buttons.length; k++) {
-      var btn = buttons[k];
-      btn.disabled = false;
-      btn.setAttribute("data-url", RELEASES_URL);
-      btn.innerHTML = DOWNLOAD_ICON + "<span>" + t("download.viewOnGithub") + "</span>";
-    }
-    metaEl.innerHTML = t("download.couldNotFetch") +
-      ' <a href="' + RELEASES_URL + '" target="_blank" rel="noopener">' + t("download.browseAll") + '</a>';
-  }
-
   // Store release data for lang switch
   var releaseData = null;
-  var fetchSucceeded = false;
   var errorEl = document.getElementById("download-error");
 
-  function fetchRelease() {
-    fetch(API_URL, { cache: "no-store" })
-      .then(function (res) {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
-      .then(function (release) {
-        try {
-          releaseData = release;
-          fetchSucceeded = true;
-          var version = release.tag_name || "latest";
-          var publishDate = release.published_at
-            ? new Date(release.published_at).toLocaleDateString(
-                currentLang === "zh" ? "zh-CN" : "en-US",
-                { year: "numeric", month: "long", day: "numeric" }
-              )
-            : "";
-          renderDownloadButtons(release.assets || [], version);
-          renderMeta(version, publishDate);
-        } catch (renderErr) {
-          console.error("[Memoir] Render error:", renderErr);
-          throw renderErr;
-        }
-      })
-      .catch(function (err) {
-        console.error("[Memoir] Failed to fetch release:", err);
-        fetchSucceeded = false;
-        if (errorEl) {
-          errorEl.style.display = "block";
-          errorEl.textContent = "API Error: " + err.message;
-        }
-        renderFallback();
+  // Multi-strategy fetch: direct API → CORS proxy → construct from tag
+  async function fetchRelease() {
+    // Strategy 1: Direct GitHub API
+    try {
+      var res = await fetch(API_URL, { cache: "no-store" });
+      if (res.ok) {
+        var release = await res.json();
+        return handleReleaseData(release);
+      }
+      // 403 = rate limit, try proxy
+      if (res.status === 403) {
+        console.warn("[Memoir] GitHub API rate limited (403), trying CORS proxy...");
+      } else {
+        throw new Error("HTTP " + res.status);
+      }
+    } catch (err) {
+      console.warn("[Memoir] Direct API failed:", err.message);
+    }
+
+    // Strategy 2: CORS proxy (corsproxy.io)
+    try {
+      var proxyRes = await fetch("https://corsproxy.io/?" + encodeURIComponent(API_URL), {
+        cache: "no-store"
       });
+      if (proxyRes.ok) {
+        var proxyRelease = await proxyRes.json();
+        console.log("[Memoir] Fetched via CORS proxy");
+        return handleReleaseData(proxyRelease);
+      }
+    } catch (proxyErr) {
+      console.warn("[Memoir] CORS proxy failed:", proxyErr.message);
+    }
+
+    // Strategy 3: Construct URLs from known tag pattern (v0.1.0 as fallback)
+    console.warn("[Memoir] All fetch strategies failed, using fallback URLs");
+    var fallbackVersion = "v0.1.0";
+    var syntheticAssets = ASSET_NAMES.map(function(name) {
+      return {
+        name: name,
+        browser_download_url: DOWNLOAD_BASE + "/" + fallbackVersion + "/" + name,
+        size: 0
+      };
+    });
+    renderDownloadButtons(syntheticAssets, fallbackVersion);
+    renderMeta(fallbackVersion, "");
+  }
+
+  function handleReleaseData(release) {
+    try {
+      releaseData = release;
+      var version = release.tag_name || "latest";
+      var publishDate = release.published_at
+        ? new Date(release.published_at).toLocaleDateString(
+            currentLang === "zh" ? "zh-CN" : "en-US",
+            { year: "numeric", month: "long", day: "numeric" }
+          )
+        : "";
+      renderDownloadButtons(release.assets || [], version);
+      renderMeta(version, publishDate);
+    } catch (renderErr) {
+      console.error("[Memoir] Render error:", renderErr);
+      throw renderErr;
+    }
   }
 
   // ===== Lang Switch =====
@@ -473,7 +489,7 @@ memoir-windows-amd64.exe</code></div>
     localStorage.setItem("memoir-lang", currentLang);
     applyLang();
     // Re-render download section
-    if (fetchSucceeded && releaseData) {
+    if (releaseData) {
       var version = releaseData.tag_name || "latest";
       var publishDate = releaseData.published_at
         ? new Date(releaseData.published_at).toLocaleDateString(
@@ -483,8 +499,6 @@ memoir-windows-amd64.exe</code></div>
         : "";
       renderDownloadButtons(releaseData.assets || [], version);
       renderMeta(version, publishDate);
-    } else {
-      renderFallback();
     }
   });
 
