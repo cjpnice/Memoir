@@ -127,7 +127,7 @@
       <div class="download-card" data-platform="linux">
         <span class="download-badge" data-i18n="download.recommended">为你推荐</span>
         <div class="download-platform-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 0 0-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587.26 1.23.455 1.756.455.527 0 1.122-.22 1.698-.474.26.39.606.7.982.882.46.227.983.393 1.495.393.512 0 1.046-.166 1.504-.393.376-.182.722-.492.982-.882.576.254 1.17.474 1.698.474.526 0 1.17-.195 1.756-.455.238.482.683.83 1.208.946.75.2 1.69-.004 2.616-.47.864-.465 1.964-.4 2.774-.6.405-.13.766-.267.94-.601.174-.34.142-.804-.106-1.484-.077-.242-.019-.571.04-.97.027-.136.055-.337.055-.536a1.44 1.44 0 0 0-.132-.602c-.206-.411-.551-.544-.864-.68-.312-.133-.598-.2-.797-.4a4.68 4.68 0 0 1-.663-.839.424.424 0 0 0-.11-.135c.123-.805-.009-1.657-.287-2.489-.589-1.77-1.831-3.47-2.716-4.521-.75-1.067-.974-1.928-1.05-3.02-.065-1.491 1.056-5.965-3.17-6.298A6.89 6.89 0 0 0 12.504 0z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
         </div>
         <h3>Linux</h3>
         <p class="arch">x86_64 (amd64)</p>
@@ -236,7 +236,6 @@ memoir-windows-amd64.exe</code></div>
       "download.subtitle": "单文件可执行程序，无需安装，下载即用。",
       "download.recommended": "为你推荐",
       "download.loading": "加载中…",
-      "download.checking": "正在检查最新版本…",
       "download.notAvailable": "暂不可用",
       "download.viewOnGithub": "在 GitHub 查看",
       "download.latestLabel": "最新版本",
@@ -251,9 +250,9 @@ memoir-windows-amd64.exe</code></div>
       "quickstart.step2.title": "在浏览器中打开",
       "quickstart.step2.desc": "集忆会启动本地服务并自动打开浏览器。如果没有，请手动访问终端显示的 URL。",
       "quickstart.step3.title": "创建项目并导入照片",
-      "quickstart.step3.desc": "点击"新建项目"，填写标题，然后上传照片。支持 JPG、PNG、HEIC 和 HEIF。",
+      "quickstart.step3.desc": "点击“新建项目”，填写标题，然后上传照片。支持 JPG、PNG、HEIC 和 HEIF。",
       "quickstart.step4.title": "AI 策划，然后导出",
-      "quickstart.step4.desc": "在设置中配置 AI API Key，点击"分析"，审核 AI 决策，生成叙事相册，导出为 HTML 或发布到 GitHub Pages。",
+      "quickstart.step4.desc": "在设置中配置 AI API Key，点击“分析”，审核 AI 决策，生成叙事相册，导出为 HTML 或发布到 GitHub Pages。",
       "footer.tagline": "集忆 — 用 ❤️ 制作，为保存有意义的记忆而生。",
       "footer.issues": "问题反馈",
       "footer.license": "MIT 许可证",
@@ -288,7 +287,6 @@ memoir-windows-amd64.exe</code></div>
       "download.subtitle": "A single executable file. No installation required. Just download and run.",
       "download.recommended": "Recommended for you",
       "download.loading": "Loading…",
-      "download.checking": "Checking for latest release…",
       "download.notAvailable": "Not available",
       "download.viewOnGithub": "View on GitHub",
       "download.latestLabel": "Latest",
@@ -340,7 +338,6 @@ memoir-windows-amd64.exe</code></div>
       }
     }
 
-    // Update lang button label
     var langBtn = document.getElementById("lang-btn");
     if (langBtn) langBtn.textContent = t("lang.switchLabel");
   }
@@ -349,10 +346,9 @@ memoir-windows-amd64.exe</code></div>
   var REPO = "cjpnice/Memoir";
   var API_URL = "https://api.github.com/repos/" + REPO + "/releases/latest";
   var RELEASES_URL = "https://github.com/" + REPO + "/releases";
+  var DOWNLOAD_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
-  var buttons = document.querySelectorAll(".download-btn");
   var metaEl = document.getElementById("download-meta");
-  var errorEl = document.getElementById("download-error");
 
   function detectPlatform() {
     var ua = navigator.userAgent || navigator.platform || "";
@@ -382,21 +378,23 @@ memoir-windows-amd64.exe</code></div>
       assetMap[assets[i].name] = assets[i];
     }
 
+    // Always query fresh from DOM to avoid stale references
+    var buttons = document.querySelectorAll(".download-btn");
     for (var j = 0; j < buttons.length; j++) {
       var btn = buttons[j];
       var assetName = btn.getAttribute("data-asset");
       var asset = assetMap[assetName];
-      var svgIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
       if (asset) {
         btn.disabled = false;
         btn.setAttribute("data-url", asset.browser_download_url);
         var sizeStr = formatSize(asset.size);
         var label = currentLang === "zh" ? "下载" : "Download";
-        btn.innerHTML = svgIcon + "<span>" + label + " " + version + (sizeStr ? " (" + sizeStr + ")" : "") + "</span>";
+        btn.innerHTML = DOWNLOAD_ICON + "<span>" + label + " " + version + (sizeStr ? " (" + sizeStr + ")" : "") + "</span>";
       } else {
         btn.disabled = true;
-        btn.innerHTML = svgIcon + "<span>" + t("download.notAvailable") + "</span>";
+        btn.removeAttribute("data-url");
+        btn.innerHTML = DOWNLOAD_ICON + "<span>" + t("download.notAvailable") + "</span>";
       }
     }
   }
@@ -416,39 +414,54 @@ memoir-windows-amd64.exe</code></div>
   }
 
   function renderFallback() {
-    var svgIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+    // Always query fresh from DOM to avoid stale references
+    var buttons = document.querySelectorAll(".download-btn");
     for (var k = 0; k < buttons.length; k++) {
       var btn = buttons[k];
       btn.disabled = false;
       btn.setAttribute("data-url", RELEASES_URL);
-      btn.innerHTML = svgIcon + "<span>" + t("download.viewOnGithub") + "</span>";
+      btn.innerHTML = DOWNLOAD_ICON + "<span>" + t("download.viewOnGithub") + "</span>";
     }
     metaEl.innerHTML = t("download.couldNotFetch") +
       ' <a href="' + RELEASES_URL + '" target="_blank" rel="noopener">' + t("download.browseAll") + '</a>';
   }
 
-  // Store release data so we can re-render on lang switch
+  // Store release data for lang switch
   var releaseData = null;
+  var fetchSucceeded = false;
+  var errorEl = document.getElementById("download-error");
 
   function fetchRelease() {
-    fetch(API_URL)
+    fetch(API_URL, { cache: "no-store" })
       .then(function (res) {
         if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
       })
       .then(function (release) {
-        releaseData = release;
-        var version = release.tag_name || "latest";
-        var publishDate = release.published_at
-          ? new Date(release.published_at).toLocaleDateString(
-              currentLang === "zh" ? "zh-CN" : "en-US",
-              { year: "numeric", month: "long", day: "numeric" }
-            )
-          : "";
-        renderDownloadButtons(release.assets || [], version);
-        renderMeta(version, publishDate);
+        try {
+          releaseData = release;
+          fetchSucceeded = true;
+          var version = release.tag_name || "latest";
+          var publishDate = release.published_at
+            ? new Date(release.published_at).toLocaleDateString(
+                currentLang === "zh" ? "zh-CN" : "en-US",
+                { year: "numeric", month: "long", day: "numeric" }
+              )
+            : "";
+          renderDownloadButtons(release.assets || [], version);
+          renderMeta(version, publishDate);
+        } catch (renderErr) {
+          console.error("[Memoir] Render error:", renderErr);
+          throw renderErr;
+        }
       })
-      .catch(function () {
+      .catch(function (err) {
+        console.error("[Memoir] Failed to fetch release:", err);
+        fetchSucceeded = false;
+        if (errorEl) {
+          errorEl.style.display = "block";
+          errorEl.textContent = "API Error: " + err.message;
+        }
         renderFallback();
       });
   }
@@ -459,8 +472,8 @@ memoir-windows-amd64.exe</code></div>
     currentLang = currentLang === "zh" ? "en" : "zh";
     localStorage.setItem("memoir-lang", currentLang);
     applyLang();
-    // Re-render download section with cached data
-    if (releaseData) {
+    // Re-render download section
+    if (fetchSucceeded && releaseData) {
       var version = releaseData.tag_name || "latest";
       var publishDate = releaseData.published_at
         ? new Date(releaseData.published_at).toLocaleDateString(
@@ -475,7 +488,7 @@ memoir-windows-amd64.exe</code></div>
     }
   });
 
-  // Handle download button clicks
+  // Handle download button clicks (event delegation on container)
   document.getElementById("download-cards").addEventListener("click", function (e) {
     var btn = e.target.closest(".download-btn");
     if (!btn || btn.disabled) return;
