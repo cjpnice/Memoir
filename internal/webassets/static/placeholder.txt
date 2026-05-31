@@ -1,0 +1,1 @@
+This directory is populated with the static web UI during release packaging.

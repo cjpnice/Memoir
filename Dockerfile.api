@@ -1,0 +1,31 @@
+FROM golang:1.26-bookworm AS build
+
+WORKDIR /src
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY cmd ./cmd
+COPY internal ./internal
+
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/memoir-api ./cmd/api
+
+FROM debian:bookworm-slim AS runtime
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends ca-certificates imagemagick libheif-examples \
+  && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY --from=build /out/memoir-api /usr/local/bin/memoir-api
+
+ENV PORT=8090
+ENV DATA_DIR=/data
+ENV MAX_UPLOAD_MB=256
+ENV MAX_UPLOAD_FILES=200
+
+EXPOSE 8090
+VOLUME ["/data"]
+
+CMD ["memoir-api"]
