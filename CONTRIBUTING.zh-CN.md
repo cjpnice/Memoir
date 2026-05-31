@@ -49,7 +49,7 @@ make package
 
 面向用户、贡献者和部署者的文档需要维护中英文 companion：
 
-- 根目录文档：`README.md` 和 `README.zh-CN.md`。
+- 根目录文档：`README.md`（中文，默认）和 `README.en.md`（英文）。
 - `docs/` 英文文档：`docs/*.md`。
 - `docs/zh-CN/` 中文文档：`docs/zh-CN/*.md`。
 

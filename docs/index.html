@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta.title">Memoir / 集忆 — AI 驱动的相册创作工具</title>
+  <meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="导入照片，让 AI 筛选和策划，生成精美的叙事相册。本地优先，隐私安全。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="container">
+    <a href="#" class="nav-brand">Memoir<span>.</span></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#features" data-i18n="nav.features">功能</a></li>
+        <li><a href="#download" data-i18n="nav.download">下载</a></li>
+        <li><a href="#quickstart" data-i18n="nav.quickstart">快速开始</a></li>
+        <li><a href="https://github.com/cjpnice/Memoir" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+      <button class="lang-btn" id="lang-btn" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge" data-i18n="hero.badge">开源 &middot; 本地优先</div>
+    <h1 data-i18n="hero.title" data-i18n-html="true">你的照片值得一个<em>故事</em><br />而不是一个文件夹</h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">集忆是一个本地优先的 AI 相册创作工具。导入旅行、家庭或日常照片，让 AI 筛选和策划，然后生成精美的叙事相册——可以导出，也可以在线发布。</p>
+    <div class="hero-actions">
+      <a href="#download" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-i18n="hero.downloadBtn">下载</span>
+      </a>
+      <a href="https://github.com/cjpnice/Memoir" target="_blank" rel="noopener" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span data-i18n="hero.githubBtn">在 GitHub 查看</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <h2 data-i18n="features.title">从成千上万张照片到一本策划相册</h2>
+      <p data-i18n="features.subtitle">AI 承担繁重工作，你做最终决定。</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <h3 data-i18n="features.import.title">智能导入</h3>
+        <p data-i18n="features.import.desc">上传 JPG、PNG、HEIC、HEIF 文件，实时进度跟踪，自动格式转换。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </div>
+        <h3 data-i18n="features.analysis.title">AI 分析</h3>
+        <p data-i18n="features.analysis.desc">质量分、保存价值、故事价值评分，附智能推荐、裁剪建议和文案种子。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3 data-i18n="features.grouping.title">智能分组</h3>
+        <p data-i18n="features.grouping.desc">自动聚合相似连拍，推荐每组最值得保留的一张代表作。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3 data-i18n="features.albums.title">叙事相册</h3>
+        <p data-i18n="features.albums.desc">生成有封面、主题页、配文、正文和结尾的相册——不是照片清单。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>
+        </div>
+        <h3 data-i18n="features.map.title">集忆地图</h3>
+        <p data-i18n="features.map.desc">使用照片 EXIF 位置数据，在交互式地图上可视化你的项目。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        </div>
+        <h3 data-i18n="features.export.title">导出与发布</h3>
+        <p data-i18n="features.export.desc">导出为独立 HTML、单张长图 PNG，或一键发布到 GitHub Pages。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Download -->
+<section class="download" id="download">
+  <div class="container">
+    <div class="section-header">
+      <h2 data-i18n="download.title">下载集忆</h2>
+      <p data-i18n="download.subtitle">单文件可执行程序，无需安装，下载即用。</p>
+    </div>
+    <div id="download-error" class="download-error"></div>
+    <div class="download-cards" id="download-cards">
+      <!-- macOS -->
+      <div class="download-card" data-platform="darwin">
+        <span class="download-badge" data-i18n="download.recommended">为你推荐</span>
+        <div class="download-platform-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        </div>
+        <h3>macOS</h3>
+        <p class="arch">Apple Silicon (arm64)</p>
+        <button class="btn btn-primary download-btn" data-asset="memoir-darwin-arm64" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="download.loading">加载中…</span>
+        </button>
+      </div>
+      <!-- Linux -->
+      <div class="download-card" data-platform="linux">
+        <span class="download-badge" data-i18n="download.recommended">为你推荐</span>
+        <div class="download-platform-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 0 0-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587.26 1.23.455 1.756.455.527 0 1.122-.22 1.698-.474.26.39.606.7.982.882.46.227.983.393 1.495.393.512 0 1.046-.166 1.504-.393.376-.182.722-.492.982-.882.576.254 1.17.474 1.698.474.526 0 1.17-.195 1.756-.455.238.482.683.83 1.208.946.75.2 1.69-.004 2.616-.47.864-.465 1.964-.4 2.774-.6.405-.13.766-.267.94-.601.174-.34.142-.804-.106-1.484-.077-.242-.019-.571.04-.97.027-.136.055-.337.055-.536a1.44 1.44 0 0 0-.132-.602c-.206-.411-.551-.544-.864-.68-.312-.133-.598-.2-.797-.4a4.68 4.68 0 0 1-.663-.839.424.424 0 0 0-.11-.135c.123-.805-.009-1.657-.287-2.489-.589-1.77-1.831-3.47-2.716-4.521-.75-1.067-.974-1.928-1.05-3.02-.065-1.491 1.056-5.965-3.17-6.298A6.89 6.89 0 0 0 12.504 0z"/></svg>
+        </div>
+        <h3>Linux</h3>
+        <p class="arch">x86_64 (amd64)</p>
+        <button class="btn btn-primary download-btn" data-asset="memoir-linux-amd64" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="download.loading">加载中…</span>
+        </button>
+      </div>
+      <!-- Windows -->
+      <div class="download-card" data-platform="windows">
+        <span class="download-badge" data-i18n="download.recommended">为你推荐</span>
+        <div class="download-platform-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+        </div>
+        <h3>Windows</h3>
+        <p class="arch">x86_64 (amd64)</p>
+        <button class="btn btn-primary download-btn" data-asset="memoir-windows-amd64.exe" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="download.loading">加载中…</span>
+        </button>
+      </div>
+    </div>
+    <p class="download-meta" id="download-meta" data-i18n="download.checking">正在检查最新版本…</p>
+  </div>
+</section>
+
+<!-- Quick Start -->
+<section class="quickstart" id="quickstart">
+  <div class="container">
+    <div class="section-header">
+      <h2 data-i18n="quickstart.title">几秒钟即可开始</h2>
+      <p data-i18n="quickstart.subtitle">下载、运行，开始创建你的第一本相册。</p>
+    </div>
+    <div class="quickstart-steps">
+      <div class="quickstart-step">
+        <h3><span class="step-num">1</span> <span data-i18n="quickstart.step1.title">下载并运行</span></h3>
+        <p data-i18n="quickstart.step1.desc">从上方下载对应平台的可执行文件，然后运行：</p>
+        <div class="code-block"><code># macOS / Linux
+chmod +x memoir-* &amp;&amp; ./memoir-*
+
+# Windows
+memoir-windows-amd64.exe</code></div>
+      </div>
+      <div class="quickstart-step">
+        <h3><span class="step-num">2</span> <span data-i18n="quickstart.step2.title">在浏览器中打开</span></h3>
+        <p data-i18n="quickstart.step2.desc">集忆会启动本地服务并自动打开浏览器。如果没有，请手动访问终端显示的 URL。</p>
+      </div>
+      <div class="quickstart-step">
+        <h3><span class="step-num">3</span> <span data-i18n="quickstart.step3.title">创建项目并导入照片</span></h3>
+        <p data-i18n="quickstart.step3.desc">点击"新建项目"，填写标题，然后上传照片。支持 JPG、PNG、HEIC 和 HEIF。</p>
+      </div>
+      <div class="quickstart-step">
+        <h3><span class="step-num">4</span> <span data-i18n="quickstart.step4.title">AI 策划，然后导出</span></h3>
+        <p data-i18n="quickstart.step4.desc">在设置中配置 AI API Key，点击"分析"，审核 AI 决策，生成叙事相册，导出为 HTML 或发布到 GitHub Pages。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <p data-i18n="footer.tagline">集忆 — 用 ❤️ 制作，为保存有意义的记忆而生。</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/cjpnice/Memoir" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://github.com/cjpnice/Memoir/issues" target="_blank" rel="noopener" data-i18n="footer.issues">问题反馈</a></li>
+        <li><a href="https://github.com/cjpnice/Memoir/blob/main/LICENSE" target="_blank" rel="noopener" data-i18n="footer.license">MIT 许可证</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ===== Translations =====
+  var translations = {
+    zh: {
+      "meta.title": "Memoir / 集忆 — AI 驱动的相册创作工具",
+      "meta.description": "导入照片，让 AI 筛选和策划，生成精美的叙事相册。本地优先，隐私安全。",
+      "nav.features": "功能",
+      "nav.download": "下载",
+      "nav.quickstart": "快速开始",
+      "hero.badge": "开源 · 本地优先",
+      "hero.title": '你的照片值得一个<em>故事</em><br />而不是一个文件夹',
+      "hero.subtitle": "集忆是一个本地优先的 AI 相册创作工具。导入旅行、家庭或日常照片，让 AI 筛选和策划，然后生成精美的叙事相册——可以导出，也可以在线发布。",
+      "hero.downloadBtn": "下载",
+      "hero.githubBtn": "在 GitHub 查看",
+      "features.title": "从成千上万张照片到一本策划相册",
+      "features.subtitle": "AI 承担繁重工作，你做最终决定。",
+      "features.import.title": "智能导入",
+      "features.import.desc": "上传 JPG、PNG、HEIC、HEIF 文件，实时进度跟踪，自动格式转换。",
+      "features.analysis.title": "AI 分析",
+      "features.analysis.desc": "质量分、保存价值、故事价值评分，附智能推荐、裁剪建议和文案种子。",
+      "features.grouping.title": "智能分组",
+      "features.grouping.desc": "自动聚合相似连拍，推荐每组最值得保留的一张代表作。",
+      "features.albums.title": "叙事相册",
+      "features.albums.desc": "生成有封面、主题页、配文、正文和结尾的相册——不是照片清单。",
+      "features.map.title": "集忆地图",
+      "features.map.desc": "使用照片 EXIF 位置数据，在交互式地图上可视化你的项目。",
+      "features.export.title": "导出与发布",
+      "features.export.desc": "导出为独立 HTML、单张长图 PNG，或一键发布到 GitHub Pages。",
+      "download.title": "下载集忆",
+      "download.subtitle": "单文件可执行程序，无需安装，下载即用。",
+      "download.recommended": "为你推荐",
+      "download.loading": "加载中…",
+      "download.checking": "正在检查最新版本…",
+      "download.notAvailable": "暂不可用",
+      "download.viewOnGithub": "在 GitHub 查看",
+      "download.latestLabel": "最新版本",
+      "download.releasedOn": "发布于",
+      "download.allReleases": "所有版本",
+      "download.couldNotFetch": "无法获取最新版本，请前往 GitHub 查看所有发布版本。",
+      "download.browseAll": "浏览所有版本",
+      "quickstart.title": "几秒钟即可开始",
+      "quickstart.subtitle": "下载、运行，开始创建你的第一本相册。",
+      "quickstart.step1.title": "下载并运行",
+      "quickstart.step1.desc": "从上方下载对应平台的可执行文件，然后运行：",
+      "quickstart.step2.title": "在浏览器中打开",
+      "quickstart.step2.desc": "集忆会启动本地服务并自动打开浏览器。如果没有，请手动访问终端显示的 URL。",
+      "quickstart.step3.title": "创建项目并导入照片",
+      "quickstart.step3.desc": "点击"新建项目"，填写标题，然后上传照片。支持 JPG、PNG、HEIC 和 HEIF。",
+      "quickstart.step4.title": "AI 策划，然后导出",
+      "quickstart.step4.desc": "在设置中配置 AI API Key，点击"分析"，审核 AI 决策，生成叙事相册，导出为 HTML 或发布到 GitHub Pages。",
+      "footer.tagline": "集忆 — 用 ❤️ 制作，为保存有意义的记忆而生。",
+      "footer.issues": "问题反馈",
+      "footer.license": "MIT 许可证",
+      "lang.switchLabel": "EN"
+    },
+    en: {
+      "meta.title": "Memoir — AI-Powered Photo Album Creator",
+      "meta.description": "Import your photos, let AI curate them, then generate beautiful narrative albums. Local-first, private by default.",
+      "nav.features": "Features",
+      "nav.download": "Download",
+      "nav.quickstart": "Quick Start",
+      "hero.badge": "Open Source · Local First",
+      "hero.title": 'Your photos deserve<br />a <em>story</em>, not a folder',
+      "hero.subtitle": "Memoir is a local-first, AI powered photo album creator. Import travel, family, or everyday photos — let AI curate them, then generate beautiful narrative albums you can export or publish online.",
+      "hero.downloadBtn": "Download",
+      "hero.githubBtn": "View on GitHub",
+      "features.title": "From thousands of photos to a curated album",
+      "features.subtitle": "AI does the heavy lifting. You make the final call.",
+      "features.import.title": "Smart Import",
+      "features.import.desc": "Upload JPG, PNG, HEIC, and HEIF files with real-time progress tracking and automatic format conversion.",
+      "features.analysis.title": "AI Analysis",
+      "features.analysis.desc": "Quality, preservation, and story scores with smart recommendations, crop suggestions, and caption seeds.",
+      "features.grouping.title": "Intelligent Grouping",
+      "features.grouping.desc": "Automatically cluster similar shots and recommend the best representative frame from each group.",
+      "features.albums.title": "Narrative Albums",
+      "features.albums.desc": "Generate albums with cover, themed pages, captions, body copy, and closing notes — not just photo grids.",
+      "features.map.title": "Memory Map",
+      "features.map.desc": "Visualize your projects on an interactive map using EXIF location data embedded in your photos.",
+      "features.export.title": "Export & Publish",
+      "features.export.desc": "Export as standalone HTML, single-image PNG, or publish directly to GitHub Pages with one click.",
+      "download.title": "Download Memoir",
+      "download.subtitle": "A single executable file. No installation required. Just download and run.",
+      "download.recommended": "Recommended for you",
+      "download.loading": "Loading…",
+      "download.checking": "Checking for latest release…",
+      "download.notAvailable": "Not available",
+      "download.viewOnGithub": "View on GitHub",
+      "download.latestLabel": "Latest",
+      "download.releasedOn": "Released",
+      "download.allReleases": "All releases",
+      "download.couldNotFetch": "Could not fetch latest version.",
+      "download.browseAll": "Browse all releases on GitHub",
+      "quickstart.title": "Get started in seconds",
+      "quickstart.subtitle": "Download, run, and start creating your first album.",
+      "quickstart.step1.title": "Download & run",
+      "quickstart.step1.desc": "Grab the binary for your platform above, then run it:",
+      "quickstart.step2.title": "Open in browser",
+      "quickstart.step2.desc": "Memoir starts a local server and opens the app automatically. If it doesn't, visit the URL shown in your terminal.",
+      "quickstart.step3.title": "Create a project & import photos",
+      "quickstart.step3.desc": "Click \"New Project\", give it a title, then upload your photos. Memoir handles JPG, PNG, HEIC, and HEIF.",
+      "quickstart.step4.title": "Let AI curate, then export",
+      "quickstart.step4.desc": "Configure your AI API key in settings, click \"Analyze\", review AI decisions, generate a narrative album, and export as HTML or publish to GitHub Pages.",
+      "footer.tagline": "Memoir — Made with ❤️ for preserving meaningful memories.",
+      "footer.issues": "Issues",
+      "footer.license": "MIT License",
+      "lang.switchLabel": "中文"
+    }
+  };
+
+  // ===== i18n Engine =====
+  var currentLang = localStorage.getItem("memoir-lang") || "zh";
+  if (currentLang !== "en") currentLang = "zh";
+
+  function t(key) {
+    return (translations[currentLang] && translations[currentLang][key]) || key;
+  }
+
+  function applyLang() {
+    document.documentElement.lang = currentLang === "zh" ? "zh-CN" : "en";
+
+    var els = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var key = el.getAttribute("data-i18n");
+      var isHtml = el.getAttribute("data-i18n-html") === "true";
+      var attr = el.getAttribute("data-i18n-attr");
+      var value = t(key);
+      if (attr) {
+        el.setAttribute(attr, value);
+      } else if (isHtml) {
+        el.innerHTML = value;
+      } else {
+        el.textContent = value;
+      }
+    }
+
+    // Update lang button label
+    var langBtn = document.getElementById("lang-btn");
+    if (langBtn) langBtn.textContent = t("lang.switchLabel");
+  }
+
+  // ===== Download Logic =====
+  var REPO = "cjpnice/Memoir";
+  var API_URL = "https://api.github.com/repos/" + REPO + "/releases/latest";
+  var RELEASES_URL = "https://github.com/" + REPO + "/releases";
+
+  var buttons = document.querySelectorAll(".download-btn");
+  var metaEl = document.getElementById("download-meta");
+  var errorEl = document.getElementById("download-error");
+
+  function detectPlatform() {
+    var ua = navigator.userAgent || navigator.platform || "";
+    if (/Mac|darwin/i.test(ua)) return "darwin";
+    if (/Win/i.test(ua)) return "windows";
+    if (/Linux/i.test(ua)) return "linux";
+    return null;
+  }
+
+  var platform = detectPlatform();
+  if (platform) {
+    var card = document.querySelector('.download-card[data-platform="' + platform + '"]');
+    if (card) card.classList.add("recommended");
+  }
+
+  function formatSize(bytes) {
+    if (!bytes) return "";
+    var mb = bytes / (1024 * 1024);
+    if (mb >= 1) return mb.toFixed(1) + " MB";
+    var kb = bytes / 1024;
+    return kb.toFixed(0) + " KB";
+  }
+
+  function renderDownloadButtons(assets, version) {
+    var assetMap = {};
+    for (var i = 0; i < assets.length; i++) {
+      assetMap[assets[i].name] = assets[i];
+    }
+
+    for (var j = 0; j < buttons.length; j++) {
+      var btn = buttons[j];
+      var assetName = btn.getAttribute("data-asset");
+      var asset = assetMap[assetName];
+      var svgIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+
+      if (asset) {
+        btn.disabled = false;
+        btn.setAttribute("data-url", asset.browser_download_url);
+        var sizeStr = formatSize(asset.size);
+        var label = currentLang === "zh" ? "下载" : "Download";
+        btn.innerHTML = svgIcon + "<span>" + label + " " + version + (sizeStr ? " (" + sizeStr + ")" : "") + "</span>";
+      } else {
+        btn.disabled = true;
+        btn.innerHTML = svgIcon + "<span>" + t("download.notAvailable") + "</span>";
+      }
+    }
+  }
+
+  function renderMeta(version, publishDate) {
+    if (currentLang === "zh") {
+      metaEl.innerHTML =
+        "最新版本：<strong>" + version + "</strong>" +
+        (publishDate ? " · 发布于 " + publishDate : "") +
+        ' · <a href="' + RELEASES_URL + '" target="_blank" rel="noopener">所有版本</a>';
+    } else {
+      metaEl.innerHTML =
+        "Latest: <strong>" + version + "</strong>" +
+        (publishDate ? " · Released " + publishDate : "") +
+        ' · <a href="' + RELEASES_URL + '" target="_blank" rel="noopener">All releases</a>';
+    }
+  }
+
+  function renderFallback() {
+    var svgIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+    for (var k = 0; k < buttons.length; k++) {
+      var btn = buttons[k];
+      btn.disabled = false;
+      btn.setAttribute("data-url", RELEASES_URL);
+      btn.innerHTML = svgIcon + "<span>" + t("download.viewOnGithub") + "</span>";
+    }
+    metaEl.innerHTML = t("download.couldNotFetch") +
+      ' <a href="' + RELEASES_URL + '" target="_blank" rel="noopener">' + t("download.browseAll") + '</a>';
+  }
+
+  // Store release data so we can re-render on lang switch
+  var releaseData = null;
+
+  function fetchRelease() {
+    fetch(API_URL)
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (release) {
+        releaseData = release;
+        var version = release.tag_name || "latest";
+        var publishDate = release.published_at
+          ? new Date(release.published_at).toLocaleDateString(
+              currentLang === "zh" ? "zh-CN" : "en-US",
+              { year: "numeric", month: "long", day: "numeric" }
+            )
+          : "";
+        renderDownloadButtons(release.assets || [], version);
+        renderMeta(version, publishDate);
+      })
+      .catch(function () {
+        renderFallback();
+      });
+  }
+
+  // ===== Lang Switch =====
+  var langBtn = document.getElementById("lang-btn");
+  langBtn.addEventListener("click", function () {
+    currentLang = currentLang === "zh" ? "en" : "zh";
+    localStorage.setItem("memoir-lang", currentLang);
+    applyLang();
+    // Re-render download section with cached data
+    if (releaseData) {
+      var version = releaseData.tag_name || "latest";
+      var publishDate = releaseData.published_at
+        ? new Date(releaseData.published_at).toLocaleDateString(
+            currentLang === "zh" ? "zh-CN" : "en-US",
+            { year: "numeric", month: "long", day: "numeric" }
+          )
+        : "";
+      renderDownloadButtons(releaseData.assets || [], version);
+      renderMeta(version, publishDate);
+    } else {
+      renderFallback();
+    }
+  });
+
+  // Handle download button clicks
+  document.getElementById("download-cards").addEventListener("click", function (e) {
+    var btn = e.target.closest(".download-btn");
+    if (!btn || btn.disabled) return;
+    var url = btn.getAttribute("data-url");
+    if (url) window.open(url, "_blank");
+  });
+
+  // Init
+  applyLang();
+  fetchRelease();
+})();
+</script>
+
+</body>
+</html>

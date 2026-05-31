@@ -49,7 +49,7 @@ Prefer small, focused changes. When touching AI behavior, exports, uploads, secu
 
 User-, contributor-, and deployment-facing docs should have Chinese and English companion files:
 
-- Root docs: `README.md` and `README.zh-CN.md`
+- Root docs: `README.md` (Chinese, default) and `README.en.md` (English)
 - English docs: `docs/*.md`
 - Chinese docs: `docs/zh-CN/*.md`
 

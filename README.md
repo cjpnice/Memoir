@@ -1,375 +1,375 @@
 # Memoir / 集忆
 
-[English](README.md) | [中文文档](README.zh-CN.md)
+[English](README.en.md) | [中文文档](README.md)
 
-**Memoir** is a local-first AI-powered photo album creator. Import your travel, family, or everyday photos, let AI analyze and curate them, then generate beautiful narrative albums you can export as HTML or publish directly to GitHub Pages.
+**Memoir / 集忆** 是一个本地优先的 AI 相册创作工具。导入旅行、家庭或日常照片，让 AI 分析和筛选，然后生成精美的叙事相册——可以导出为 HTML，也可以直接发布到 GitHub Pages。
 
-Built for people who have thousands of meaningful photos sitting in folders—the images matter, but the work of choosing, sequencing, and sharing them is easy to postpone forever.
+面向那些相册里已经攒了成千上万张有意义照片的人——照片不是不重要，而是太多、太散，整理和分享的工作总是一拖再拖。
 
-## Why Memoir?
+## 为什么做集忆
 
-Taking photos is effortless. Revisiting them is not. A single weekend can leave behind hundreds of frames: near-duplicates, blurred candids, and small details that may feel ordinary today but become precious years later.
+拍照越来越容易，翻看却越来越难。一次周末可能留下几百张图：相似连拍、模糊抓拍，还有一些当下看起来普通、几年后却会突然变珍贵的细节。
 
-Memoir asks: **if AI can understand images, can it help preserve memory instead of just generating more content?**
+集忆的核心问题是：**如果 AI 真的理解照片，它能不能帮人保存记忆，而不只是生成更多内容？**
 
-Three principles guide the project:
+项目遵循三个原则：
 
-- **Local first** — Your photos, project state, and exports stay on your machine by default
-- **Human in the loop** — AI recommends and drafts; you decide, edit, and publish
-- **Narrative output** — Albums with cover, pacing, captions, and closing notes, not just photo grids
+- **本地优先** — 照片、项目状态和导出内容默认留在你的机器上
+- **人在回路中** — AI 给建议、生成草稿；你决定、编辑和发布
+- **叙事成册** — 输出是有封面、节奏、配文和结尾的相册，不是照片清单
 
-## Features
+## 功能特性
 
-### Core Workflow
+### 核心流程
 
-- **Smart Import** — Upload JPG, PNG, HEIC, and HEIF files with real-time progress tracking
-- **AI Analysis** — Quality, preservation, and story scores with recommendations, issues, crop suggestions, and caption seeds
-- **Intelligent Grouping** — Automatically cluster similar shots and recommend the best representative frame
-- **Human Review** — Review AI decisions, delete images, undo edits, and override recommendations
-- **Narrative Album Generation** — Create editable albums with pages, titles, body copy, image placement, and social post drafts
-- **Album Editing** — Reorder pages, undo/redo changes, and refine the narrative flow
+- **智能导入** — 上传 JPG、PNG、HEIC、HEIF 文件，实时进度跟踪
+- **AI 分析** — 质量分、保存价值、故事价值评分，附推荐意见、问题提示、裁剪建议和文案种子
+- **智能分组** — 自动聚合相似连拍，推荐每组最值得保留的一张
+- **人工审核** — 审查 AI 决策、删除图片、撤销编辑、覆盖推荐
+- **叙事相册生成** — 创建可编辑的相册，包含页面、标题、正文、配图和社交发布草稿
+- **相册编辑** — 页面排序、撤销/重做、精细化叙事流程
 
-### Export & Publishing
+### 导出与发布
 
-- **HTML Export** — Standalone interactive albums with photo zoom and responsive layout
-- **Long Image Export** — Single PNG for easy sharing on messaging apps
-- **Share Links** — Local web server URLs for quick previews
-- **GitHub Pages Publishing** — Publish albums directly to GitHub Pages with:
-  - Automatic album cover and metadata extraction
-  - Beautiful landing page listing all published albums
-  - Real-time upload progress tracking
-  - Auto-generated album homepage that updates with each publish
+- **HTML 导出** — 独立交互式相册，支持照片放大和响应式布局
+- **长图导出** — 单张 PNG，方便在聊天应用分享
+- **分享链接** — 本地 Web 服务器 URL，快速预览
+- **GitHub Pages 发布** — 直接发布到 GitHub Pages，包含：
+  - 自动提取相册封面和元数据
+  - 精美的落地页，列出所有已发布相册
+  - 实时上传进度跟踪
+  - 自动生成相册首页，每次发布自动更新
 
-### Additional Features
+### 其他功能
 
-- **Memory Map** — Visualize projects on an interactive map using EXIF location data
-- **Social Post Generation** — AI-generated captions for Xiaohongshu, WeChat Moments, and other platforms with recommended image sets
-- **Settings Persistence** — AI model and GitHub Pages configuration saved locally
-- **Project Organization** — Multiple projects with titles, descriptions, locations, and visual themes
+- **集忆地图** — 使用 EXIF 位置数据在交互式地图上可视化项目
+- **社交文案生成** — AI 为小红书、朋友圈等平台生成文案，附推荐配图
+- **设置持久化** — AI 模型和 GitHub Pages 配置本地保存
+- **项目组织** — 多个项目，支持标题、描述、地点和视觉主题
 
-## Tech Stack
+## 技术栈
 
-- **Frontend**: Next.js 16, React 19, TypeScript, lucide-react, react-map-gl
-- **Backend**: Go 1.26, Gin web framework
-- **AI**: Eino framework, OpenAI-compatible multimodal models
-- **Storage**: Local JSON files and media directory (no external database)
-- **Media Processing**: Go image libraries, HEIC/HEIF conversion, Chrome-based PDF rendering
-- **Deployment**: Docker Compose, single-file Go binaries with embedded frontend
+- **前端**: Next.js 16, React 19, TypeScript, lucide-react, react-map-gl
+- **后端**: Go 1.26, Gin Web 框架
+- **AI**: Eino 框架，OpenAI 兼容多模态模型
+- **存储**: 本地 JSON 文件和媒体目录（无需外部数据库）
+- **媒体处理**: Go 图像库，HEIC/HEIF 转换，Chrome 渲染 PDF
+- **部署**: Docker Compose，单文件 Go 二进制（内嵌前端）
 
-## Quick Start
+## 快速开始
 
-### Prerequisites
+### 环境要求
 
 - Go 1.26+
 - Node.js 22+
 - npm
 
-### Development Setup
+### 开发环境搭建
 
-1. **Install dependencies**:
+1. **安装依赖**：
    ```bash
    make setup
    ```
 
-2. **Configure environment**:
+2. **配置环境**：
    ```bash
    cp .env.example .env
    ```
-   
-   Edit `.env` and set your OpenAI-compatible API credentials:
+
+   编辑 `.env`，设置 OpenAI 兼容 API 凭证：
    ```bash
    OPENAI_BASE_URL=https://api.openai.com/v1
-   OPENAI_API_KEY=your-api-key-here
+   OPENAI_API_KEY=你的API密钥
    OPENAI_MODEL=gpt-4o-mini
    ```
 
-3. **Start the API server** (in one terminal):
+3. **启动 API 服务**（在一个终端）：
    ```bash
    make dev-api
    ```
 
-4. **Start the web frontend** (in another terminal):
+4. **启动 Web 前端**（在另一个终端）：
    ```bash
    make dev-web
    ```
 
-5. **Open the app**:
+5. **打开应用**：
    ```
    http://localhost:3000
    ```
 
-The frontend calls the Go API at `http://127.0.0.1:8090` by default.
+前端默认调用 `http://127.0.0.1:8090` 的 Go API。
 
-### Docker Setup
+### Docker 部署
 
 ```bash
 cp .env.example .env
-# Edit .env with your API credentials
+# 编辑 .env 填入 API 凭证
 make docker-up
 ```
 
-Services:
+服务：
 - Web: `http://localhost:3000`
 - API: `http://localhost:8090`
 
-### Single-File Release
+### 单文件发布
 
-Build a standalone binary with the frontend embedded:
+构建内嵌前端的独立二进制：
 
 ```bash
 make package
 ```
 
-Release binaries are written to `dist/`. Run the matching binary to start a local server.
+发布二进制输出到 `dist/`，运行对应平台的可执行文件即可启动本地服务。
 
-## Usage Workflow
+## 使用流程
 
-### 1. Create a Project
+### 1. 创建项目
 
-Click "新建项目" on the homepage. Set a title, description, location (optional), tone, and visual theme.
+点击首页的"新建项目"，填写标题、描述、地点（可选）、语气和视觉主题。
 
-### 2. Import Photos
+### 2. 导入照片
 
-Upload JPG, PNG, HEIC, or HEIF files. The app shows real-time upload progress and recent imports.
+上传 JPG、PNG、HEIC 或 HEIF 文件，应用会显示实时上传进度和最近导入。
 
-### 3. AI Analysis
+### 3. AI 分析
 
-Click "开始分析" to let the AI model:
-- Score each photo for quality, preservation value, and story potential
-- Identify issues (blur, exposure, composition)
-- Suggest crops and improvements
-- Group similar shots
-- Generate caption seeds
+点击"开始分析"，让 AI 模型：
+- 为每张照片的质量、保存价值和故事潜力打分
+- 识别问题（模糊、曝光、构图）
+- 建议裁剪和改进
+- 聚合相似连拍
+- 生成文案种子
 
-### 4. Review Decisions
+### 4. 审核决策
 
-Navigate to the "审核" tab to:
-- See AI recommendations for each image
-- Override decisions (keep, exclude, improve then keep)
-- Delete unwanted photos
-- Filter and sort by various criteria
+切换到"审核"标签页：
+- 查看每张图片的 AI 推荐
+- 覆盖决策（保留、排除、改进后保留）
+- 删除不需要的照片
+- 按各种条件筛选和排序
 
-### 5. Generate Album
+### 5. 生成相册
 
-Click "生成相册" to create a narrative album with:
-- Cover page with title and intro
-- Themed pages with titles, body text, and image placement
-- Closing notes
-- Social media post drafts
+点击"生成相册"，创建叙事相册：
+- 封面页，包含标题和简介
+- 主题页面，包含标题、正文和配图
+- 结尾备注
+- 社交媒体文案草稿
 
-### 6. Edit Album
+### 6. 编辑相册
 
-In the "相册" tab:
-- Reorder pages by drag-and-drop
-- Edit page titles and body text
-- Adjust image placement
-- Undo/redo changes
+在"相册"标签页：
+- 拖拽重新排序页面
+- 编辑页面标题和正文
+- 调整图片位置
+- 撤销/重做修改
 
-### 7. Export
+### 7. 导出
 
-Choose an export format in the "导出" tab:
+在"导出"标签页选择导出格式：
 
-- **HTML** — Interactive web album with photo zoom
-- **Long Image** — Single PNG for messaging apps
-- **Share Link** — Local preview URL
-- **GitHub Pages** — Publish online (requires setup)
+- **HTML** — 交互式网页相册，支持照片放大
+- **长图** — 单张 PNG，方便聊天分享
+- **分享链接** — 本地预览 URL
+- **GitHub Pages** — 在线发布（需要配置）
 
-Export results are persisted—refreshing the page won't lose them.
+导出结果会持久保存——刷新页面不会丢失。
 
-## GitHub Pages Publishing
+## GitHub Pages 发布
 
-Publish albums to GitHub Pages for online access and sharing.
+将相册发布到 GitHub Pages，随时随地在线访问和分享。
 
-### Setup
+### 配置
 
-1. **Create a GitHub repository**:
-   - Go to [github.com/new](https://github.com/new)
-   - Create a public repository (e.g., `my-albums`)
-   - Initialize with a README
+1. **创建 GitHub 仓库**：
+   - 访问 [github.com/new](https://github.com/new)
+   - 创建公开仓库（例如 `my-albums`）
+   - 初始化 README
 
-2. **Generate a Personal Access Token**:
-   - Go to [GitHub Token Settings](https://github.com/settings/tokens/new)
-   - Select the `repo` scope
-   - Generate and copy the token (starts with `ghp_`)
+2. **生成 Personal Access Token**：
+   - 访问 [GitHub Token 设置](https://github.com/settings/tokens/new)
+   - 勾选 `repo` 权限
+   - 生成并复制 token（以 `ghp_` 开头）
 
-3. **Configure in Memoir**:
-   - Click the ⚙ settings button on the homepage
-   - Fill in the GitHub Pages card:
-     - **Owner**: Your GitHub username
-     - **Repo**: Repository name (e.g., `my-albums`)
-     - **Branch**: `main` (default)
-     - **Token**: Your personal access token
-   - Click "保存 GitHub 设置"
+3. **在集忆中配置**：
+   - 点击首页的 ⚙ 设置按钮
+   - 填写 GitHub Pages 卡片：
+     - **所有者**：你的 GitHub 用户名
+     - **仓库名**：仓库名称（例如 `my-albums`）
+     - **分支**：`main`（默认）
+     - **Token**：你的 personal access token
+   - 点击"保存 GitHub 设置"
 
-4. **Enable GitHub Pages** (one-time):
-   - Go to your repository's Settings → Pages
+4. **启用 GitHub Pages**（一次性操作）：
+   - 进入仓库 Settings → Pages
    - Source: "Deploy from a branch"
-   - Branch: `main`, folder: `/ (root)`
-   - Save
+   - Branch: `main`，folder: `/ (root)`
+   - 保存
 
-### Publishing
+### 发布
 
-1. Open a project with a generated album
-2. Go to the "导出" tab
-3. Select "GitHub Pages" export type
-4. Click "发布到 GitHub Pages"
-5. Watch real-time progress as images and HTML are uploaded
-6. Copy the published URL when complete
+1. 打开一个已生成相册的项目
+2. 切换到"导出"标签页
+3. 选择"GitHub Pages"导出类型
+4. 点击"发布到 GitHub Pages"
+5. 观看实时进度，图片和 HTML 逐步上传
+6. 完成后复制发布 URL
 
-Your album will be available at:
+相册地址：
 ```
-https://{username}.github.io/{repo}/albums/{album-slug}/
-```
-
-### Album Homepage
-
-Memoir automatically creates and maintains a landing page at the repository root:
-```
-https://{username}.github.io/{repo}/
+https://{用户名}.github.io/{仓库名}/albums/{相册slug}/
 ```
 
-The homepage displays:
-- Grid of album cards with cover images
-- Album titles and intro text
-- Publication dates
-- Responsive layout for mobile and desktop
+### 相册首页
 
-The homepage updates automatically when you publish new albums. You can also manually refresh it from the settings page.
+集忆会自动创建并维护仓库根目录的落地页：
+```
+https://{用户名}.github.io/{仓库名}/
+```
 
-### Manual Refresh
+首页展示：
+- 相册卡片网格，包含封面图
+- 相册标题和简介文字
+- 发布日期
+- 响应式布局，适配手机和桌面
 
-If you delete albums or need to regenerate the homepage:
-1. Open settings (⚙ button on homepage)
-2. Click "刷新相册首页" in the GitHub Pages section
+每次发布新相册时，首页会自动更新。也可以在设置页面手动刷新。
 
-## Configuration
+### 手动刷新
 
-### Environment Variables
+如果删除了相册或需要重新生成首页：
+1. 打开设置（首页 ⚙ 按钮）
+2. 在 GitHub Pages 区域点击"刷新相册首页"
 
-Copy `.env.example` to `.env` and configure:
+## 配置
+
+### 环境变量
+
+复制 `.env.example` 到 `.env` 并配置：
 
 ```bash
-# Server
+# 服务器
 PORT=8090
 DATA_DIR=./data
 
-# CORS (empty for permissive local dev)
+# CORS（本地开发留空即可）
 ALLOWED_ORIGINS=
 
-# Upload limits
+# 上传限制
 MAX_UPLOAD_MB=256
 MAX_UPLOAD_FILES=200
 
-# Frontend API endpoint
+# 前端 API 地址
 NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8090
 
-# OpenAI-compatible multimodal model (required for AI features)
+# OpenAI 兼容多模态模型（AI 功能必需）
 OPENAI_BASE_URL=
 OPENAI_API_KEY=
 OPENAI_MODEL=gpt-4o-mini
 
-# Optional: separate image editing model
+# 可选：独立的图像编辑模型
 OPENAI_IMAGE_BASE_URL=
 OPENAI_IMAGE_API_KEY=
 OPENAI_IMAGE_MODEL=gpt-image-1.5
 ```
 
-### AI Model Requirements
+### AI 模型要求
 
-Memoir works with any OpenAI-compatible multimodal model that supports image input. Popular options:
+集忆支持任何 OpenAI 兼容的多模态模型（需支持图像输入）。常用选项：
 
 - OpenAI GPT-4o / GPT-4o-mini
-- Anthropic Claude (via compatible proxy)
-- Local models with OpenAI-compatible API
+- Anthropic Claude（通过兼容代理）
+- 本地模型（需 OpenAI 兼容 API）
 
-Without an API key, the app starts normally but analysis and album generation return configuration errors.
+不配置 API Key 时，应用正常启动，但分析和相册生成会返回配置错误提示。
 
-### Settings Persistence
+### 设置持久化
 
-AI model and GitHub Pages settings are saved to:
+AI 模型和 GitHub Pages 设置保存在：
 ```
 {DATA_DIR}/ai-settings.json
 {DATA_DIR}/github-settings.json
 ```
 
-Settings configured in the web UI override environment variables.
+在 Web UI 中配置的设置会覆盖环境变量。
 
-## Project Structure
+## 项目结构
 
 ```
 Memoir/
-├── apps/web/              # Next.js frontend
-│   ├── app/               # App router pages
-│   ├── components/        # React components
-│   │   └── dashboard/     # Main workspace views
-│   ├── lib/               # Utilities and API client
-│   └── public/            # Static assets
+├── apps/web/              # Next.js 前端
+│   ├── app/               # App router 页面
+│   ├── components/        # React 组件
+│   │   └── dashboard/     # 主工作区视图
+│   ├── lib/               # 工具函数和 API 客户端
+│   └── public/            # 静态资源
 ├── cmd/
-│   ├── api/               # Development API entry point
-│   └── memoir/            # Single-file release entry point
+│   ├── api/               # 开发环境 API 入口
+│   └── memoir/            # 单文件发布入口
 ├── internal/
-│   ├── ai/                # AI analyzer and model adapters
-│   ├── app/               # Service layer and business logic
-│   ├── config/            # Configuration management
-│   ├── domain/            # Domain models (Project, Album, Image)
-│   ├── httpapi/           # HTTP handlers and routing
-│   ├── media/             # Image processing and storage
-│   ├── store/             # JSON file persistence
-│   └── webassets/         # Embedded frontend assets
-├── scripts/               # Build and release scripts
-├── compose.yaml           # Docker Compose configuration
-└── Makefile               # Development commands
+│   ├── ai/                # AI 分析器和模型适配器
+│   ├── app/               # 服务层和业务逻辑
+│   ├── config/            # 配置管理
+│   ├── domain/            # 领域模型（Project, Album, Image）
+│   ├── httpapi/           # HTTP 处理器和路由
+│   ├── media/             # 图像处理和存储
+│   ├── store/             # JSON 文件持久化
+│   └── webassets/         # 内嵌前端资源
+├── scripts/               # 构建和发布脚本
+├── compose.yaml           # Docker Compose 配置
+└── Makefile               # 开发命令
 ```
 
-## Common Commands
+## 常用命令
 
 ```bash
-make setup        # Install frontend dependencies
-make dev          # Run API and web together
-make dev-api      # Run the Go API server
-make dev-web      # Run Next.js dev server
-make test         # Run tests and build checks
-make build        # Build Go packages and web app
-make package      # Create single-file release binaries
-make fmt          # Format Go code
-make clean        # Remove data/ and build artifacts
-make docker-up    # Start Docker Compose services
-make docker-down  # Stop Docker Compose services
+make setup        # 安装前端依赖
+make dev          # 同时启动 API 和 Web
+make dev-api      # 启动 Go API 服务
+make dev-web      # 启动 Next.js 开发服务器
+make test         # 运行测试和构建检查
+make build        # 构建 Go 包和 Web 应用
+make package      # 创建单文件发布二进制
+make fmt          # 格式化 Go 代码
+make clean        # 删除 data/ 和构建产物
+make docker-up    # 启动 Docker Compose 服务
+make docker-down  # 停止 Docker Compose 服务
 ```
 
-## AI and Privacy
+## AI 与隐私
 
-- **Local by default** — All photos, project data, and exports stay on your machine
-- **API calls** — Only image analysis requests are sent to your configured AI provider
-- **No telemetry** — Memoir does not collect usage data or analytics
-- **Your control** — You choose which photos to analyze and which to publish
+- **默认本地** — 所有照片、项目数据和导出内容留在你的机器上
+- **API 调用** — 只有图像分析请求会发送到你配置的 AI 提供商
+- **无遥测** — 集忆不收集使用数据或分析
+- **你的控制** — 你选择哪些照片分析、哪些发布
 
-Do not commit `.env`, `data/`, private photos, API keys, or personal albums to version control.
+不要把 `.env`、`data/`、私人照片、API Key 或个人相册提交到版本控制。
 
-## Contributing
+## 贡献
 
-Memoir is pre-1.0 and actively developed. Areas where help is welcome:
+集忆仍处于 pre-1.0，积极开发中。欢迎从这些方向参与：
 
-- **Testing** — Add frontend interaction tests and API integration tests
-- **Export formats** — PDF, EPUB, print-ready layouts
-- **Album themes** — Additional visual themes and page layouts
-- **AI providers** — Support for more multimodal model providers
-- **Deployment** — Kubernetes manifests, security hardening, self-hosting guides
-- **Documentation** — Tutorials, video guides, and troubleshooting
+- **测试** — 添加前端交互测试和 API 集成测试
+- **导出格式** — PDF、EPUB、印刷版式
+- **相册主题** — 更多视觉主题和页面布局
+- **AI 提供商** — 支持更多多模态模型提供商
+- **部署** — Kubernetes 配置、安全加固、自托管指南
+- **文档** — 教程、视频指南和故障排查
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md) before contributing.
+贡献前请先阅读 [贡献指南](CONTRIBUTING.zh-CN.md) 和 [安全策略](SECURITY.zh-CN.md)。
 
-## License
+## 许可证
 
-MIT License. See [LICENSE](LICENSE).
+MIT 许可证。详见 [LICENSE](LICENSE)。
 
-## Acknowledgments
+## 致谢
 
-- Built with [Next.js](https://nextjs.org/), [React](https://react.dev/), and [Go](https://go.dev/)
-- AI integration via [Eino](https://github.com/cloudwego/eino) framework
-- Icons by [Lucide](https://lucide.dev/)
-- Maps powered by [MapLibre GL](https://maplibre.org/)
+- 使用 [Next.js](https://nextjs.org/)、[React](https://react.dev/) 和 [Go](https://go.dev/) 构建
+- AI 集成基于 [Eino](https://github.com/cloudwego/eino) 框架
+- 图标来自 [Lucide](https://lucide.dev/)
+- 地图由 [MapLibre GL](https://maplibre.org/) 提供支持
 
 ---
 
-**Made with ❤️ for preserving meaningful memories**
+**用 ❤️ 制作，为保存有意义的记忆而生**
